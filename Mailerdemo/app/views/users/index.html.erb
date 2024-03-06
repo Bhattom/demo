@@ -1,0 +1,38 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Users</h1>
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :name_or_email_or_login_cont %>
+  <%= f.search_field :name_or_email_or_login_cont %>
+  <%= f.submit 'Search' %>
+<% end %>
+<br>
+<div id="users">
+  <% @users.each do |user| %>
+    <p>
+    <strong>Name:</strong>
+    <%= user.name %>
+  </p>
+  </p>
+    <p>
+     <%= link_to "Show this user", user %>
+    </p>
+    <p> ------------------------------------------</p>
+  <% end %>
+  
+  <% @users.each do |user| %>
+    <!-- Display user data -->
+  <% end %>
+ 
+</div>
+<%= paginate @users %>
+<br>
+<%= link_to "New user", new_user_path %>
+<br>
+<p>
+  Download:
+  <%= link_to "CSV", users_path(format: "csv") %>
+  
+</p>
+
